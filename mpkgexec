@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Ermittelt den echten Benutzernamen, da das Tool als sudo läuft
+REAL_USER=${SUDO_USER:-$USER}
+
+# Pfad zum Desktop des Benutzers
+DESKTOP_PATH="/Users/$REAL_USER/Desktop"
+
+# Datei erstellen
+echo "mpkg script execution worked perfectly!" > "$DESKTOP_PATH/worked"
+
+# Rechte an den echten Benutzer zurückgeben, damit sie nicht root gehört
+chown "$REAL_USER":staff "$DESKTOP_PATH/worked"
+
+echo "-> [mpkgexec] Success: Created 'worked' file on $REAL_USER's desktop."
