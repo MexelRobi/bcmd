@@ -9,7 +9,7 @@ pub struct Storage {
 }
 
 impl Storage {
-    const FILE_PATH: &'static str = "shortcuts.toml";
+    const FILE_PATH: &'static str = ".shortcuts.toml";
 
     pub fn load() -> Self {
         if !Path::new(Self::FILE_PATH).exists() {
